@@ -4,6 +4,7 @@ const Pagination = ({ totalPost, postPerPage, setCurrentPage }) => {
     pages.push(i)
   }
   return (
+    <>
     <div>
       {
         pages.map((page, index) => {
@@ -13,6 +14,7 @@ const Pagination = ({ totalPost, postPerPage, setCurrentPage }) => {
         })
       }
     </div>
+    </>
   )
 }
 

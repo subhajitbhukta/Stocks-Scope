@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import image from '../img/main.jpg';
+import image from '../../img/main.jpg';
 import { NavLink,Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import logo from '../img/logo.png'
+import logo from '../../img/logo.png'
 import Card from '../StockCard/Card';
 const Main = () => {
     const { symbol } = useParams();

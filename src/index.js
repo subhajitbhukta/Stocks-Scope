@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { Provider } from 'react-redux';
-import { store } from './Store/Store';
-import Card from './StockCard/Card';
+import { store } from './Components/Store/Store';
+import Card from './Components/StockCard/Card';
 import App from './App';
 import {
   Route,
@@ -11,7 +11,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import Details from './Details/Details';
+import Details from './Components/Details/Details';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
