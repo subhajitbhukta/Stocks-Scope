@@ -8,9 +8,11 @@ const Main = () => {
     const { symbol } = useParams();
     const [searchValue, setSearchValue] = useState('');
 
-    const stockDataSearch = useSelector(state =>
-        state.datas.filter(stock => stock.Symbol?.toLowerCase().includes(searchValue.toLowerCase()))
-    );
+    const stockDataSearch = useSelector(state => {
+        const datas = state.datas.datas || [];
+        if (!Array.isArray(datas)) return [];
+        return datas.filter(stock => stock.Symbol?.toLowerCase().includes(searchValue.toLowerCase()));
+    });
 
 
     const handleChange = (e) => {    

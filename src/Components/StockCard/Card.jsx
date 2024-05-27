@@ -9,6 +9,7 @@ const Card = () => {
     const dispatch = useDispatch();
     const [stocks, setStocks] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [error, setError] = useState(null);
     const postPerPage = 54;
     const navigate = useNavigate();
 
@@ -25,21 +26,45 @@ const Card = () => {
 
             try {
                 const response = await fetch(url, options);
+                if(response===429){
+                    throw new Error("Too many requests. Please try again later.");
+                }
                 const result = await response.json();
+                if (!Array.isArray(result)) {
+                    throw new Error("Unexpected response format.");
+                }
                 dispatch(allstocks(result));
-                setStocks(result); // Update state with fetched data
+                setStocks(result); 
                 console.log(result);
             } catch (error) {
                 console.error(error);
+                setError(error.message)
             }
         };
 
         fetchData();
-    }, [dispatch]); // Empty dependency array ensures the effect runs only once
+    }, [dispatch]); 
+
+
+    // if (error) {
+    //     return (
+    //         <div className="min-h-screen bg-slate-800 p-6 flex justify-center items-center">
+    //             <div className="bg-red-500 text-white p-4 rounded-lg">
+    //                 <p>Error: {error}</p>
+    //             </div>
+    //         </div>
+    //     );
+    // }
+
 
     const lastPostIndex = currentPage * postPerPage;
     const firstPostIndex = lastPostIndex - postPerPage;
-    const currentStocksData = stocks.slice(firstPostIndex, lastPostIndex);
+    const currentStocksData =Array.isArray? stocks.slice(firstPostIndex, lastPostIndex):[];
+
+
+
+
+    
 
     return (
         <>
