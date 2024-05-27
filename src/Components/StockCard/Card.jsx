@@ -46,15 +46,15 @@ const Card = () => {
     }, [dispatch]); 
 
 
-    // if (error) {
-    //     return (
-    //         <div className="min-h-screen bg-slate-800 p-6 flex justify-center items-center">
-    //             <div className="bg-red-500 text-white p-4 rounded-lg">
-    //                 <p>Error: {error}</p>
-    //             </div>
-    //         </div>
-    //     );
-    // }
+    if (error) {
+        return (
+            <div className="min-h-screen bg-slate-800 p-6 flex justify-center items-center">
+                <div className="bg-red-500 text-white p-4 rounded-lg">
+                    <p>Error: {error}</p>
+                </div>
+            </div>
+        );
+    }
 
 
     const lastPostIndex = currentPage * postPerPage;
