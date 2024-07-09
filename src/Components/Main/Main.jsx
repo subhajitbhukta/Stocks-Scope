@@ -9,7 +9,7 @@ const Main = () => {
     const [searchValue, setSearchValue] = useState('');
 
     const stockDataSearch = useSelector(state => {
-        const datas = state.datas.datas || [];
+        const datas = state.datas || [];
         if (!Array.isArray(datas)) return [];
         return datas.filter(stock => stock.Symbol?.toLowerCase().includes(searchValue.toLowerCase()));
     });
